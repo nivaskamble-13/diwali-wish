@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auspicious Diwali Celebration</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Heavy Background Rockets Canvas -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Top Real Marigold Toran -->
+  <header class="royal-toran">
+    <div class="toran-item leaf">🍃</div>
+    <div class="toran-item flower orange">🏵️</div>
+    <div class="toran-item flower yellow">🌼</div>
+    <div class="toran-item leaf">🍃</div>
+    <div class="toran-item flower orange">🏵️</div>
+    <div class="toran-item flower yellow">🌼</div>
+    <div class="toran-item leaf">🍃</div>
+    <div class="toran-item flower orange">🏵️</div>
+    <div class="toran-item flower yellow">🌼</div>
+    <div class="toran-item leaf">🍃</div>
+    <div class="toran-item flower orange">🏵️</div>
+    <div class="toran-item flower yellow">🌼</div>
+    <div class="toran-item leaf">🍃</div>
+  </header>
+
+  <!-- Side Vertical Marigold Garlands (फुलांच्या माळी) -->
+  <aside class="side-garland left-garland">
+    <div class="flower-drop">🌼</div><div class="flower-drop orange">🏵️</div>
+    <div class="flower-drop">🌼</div><div class="flower-drop orange">🏵️</div>
+    <div class="flower-drop">🌼</div><div class="flower-drop orange">🏵️</div>
+    <div class="flower-drop">🌼</div><div class="flower-drop orange">🏵️</div>
+    <div class="flower-drop">🌼</div><div class="flower-drop orange">🏵️</div>
+  </aside>
+
+  <aside class="side-garland right-garland">
+    <div class="flower-drop orange">🏵️</div><div class="flower-drop">🌼</div>
+    <div class="flower-drop orange">🏵️</div><div class="flower-drop">🌼</div>
+    <div class="flower-drop orange">🏵️</div><div class="flower-drop">🌼</div>
+    <div class="flower-drop orange">🏵️</div><div class="flower-drop">🌼</div>
+    <div class="flower-drop orange">🏵️</div><div class="flower-drop">🌼</div>
+  </aside>
+
+  <!-- Waving Velvet Curtains (लहरत येणारे मखमली पडदे) -->
+  <div id="curtainOverlay" class="curtain-overlay">
+    <div class="curtain-panel curtain-left">
+      <div class="curtain-folds"></div>
+      <div class="gold-zari-fringe"></div>
+    </div>
+    <div class="curtain-panel curtain-right">
+      <div class="curtain-folds"></div>
+      <div class="gold-zari-fringe"></div>
+    </div>
+    
+    <!-- Realistic Anar Stage -->
+    <div id="anarStage" class="anar-stage hidden">
+      <div class="ambient-fire-light" id="ambientLight"></div>
+      
+      <!-- 3D Realistic Fireworks Anar -->
+      <div id="anarCracker" class="anar-3d" onclick="igniteAnar()">
+        <div class="wick-cord">
+          <div class="wick-spark" id="wickSpark"></div>
+        </div>
+        <div class="anar-clay-neck"></div>
+        <div class="anar-metallic-cone">
+          <div class="cone-shimmer"></div>
+          <div class="anar-brand">ROYAL<br><span>DELUXE</span></div>
+          <div class="golden-border-strip"></div>
+        </div>
+        <div class="anar-clay-bottom"></div>
+      </div>
+
+      <p id="anarInstruction" class="anar-prompt-text">Tap the flower pot to Ignite 💥</p>
+      <canvas id="sparkFountainCanvas"></canvas>
+    </div>
+  </div>
+
+  <!-- Main Luxury Frame -->
+  <main class="luxury-main-container" id="mainContainer">
+    <div class="royal-gold-box">
+      <div class="filigree-corner tl"></div>
+      <div class="filigree-corner tr"></div>
+      <div class="filigree-corner bl"></div>
+      <div class="filigree-corner br"></div>
+
+      <!-- ================= PAGE 1 ================= -->
+      <section id="page1" class="page-view active">
+        <div class="brass-diya">
+          <div class="glowing-flame"></div>
+        </div>
+
+        <h3 class="welcome-banner">✦ Welcome to the Celebration ✦</h3>
+        <h2 class="prompt-heading">Enter Your Name</h2>
+        
+        <div class="input-container">
+          <input type="text" id="userNameInput" placeholder="Type your name here..." autocomplete="off">
+        </div>
+
+        <button id="p1NextBtn" class="luxury-gold-btn hidden" onclick="triggerCurtainTransition()">
+          <span>Continue</span> <span class="arrow-glyph">➜</span>
+        </button>
+
+        <!-- Center SVG Realistic Rangoli -->
+        <div class="rangoli-wrapper">
+          <svg viewBox="0 0 100 100" class="rangoli-svg">
+            <circle cx="50" cy="50" r="47" fill="none" stroke="#d4af37" stroke-width="0.8" stroke-dasharray="2 1.5"/>
+            <circle cx="50" cy="50" r="39" fill="none" stroke="#ffe899" stroke-width="0.5"/>
+            <g stroke="#d4af37" stroke-width="0.6" fill="none">
+              <path d="M50 10 Q56 30 50 50 Q44 30 50 10 Z"/>
+              <path d="M50 90 Q56 70 50 50 Q44 70 50 90 Z"/>
+              <path d="M10 50 Q30 56 50 50 Q30 44 10 50 Z"/>
+              <path d="M90 50 Q70 56 50 50 Q70 44 90 50 Z"/>
+              <path d="M22 22 Q40 36 50 50 Q36 40 22 22 Z"/>
+              <path d="M78 78 Q60 64 50 50 Q64 60 78 78 Z"/>
+              <path d="M78 22 Q64 40 50 50 Q60 36 78 22 Z"/>
+              <path d="M22 78 Q36 60 50 50 Q40 64 22 78 Z"/>
+            </g>
+            <circle cx="50" cy="50" r="8" fill="#d4af37"/>
+            <circle cx="50" cy="50" r="3" fill="#4d020a"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 2 ================= -->
+      <section id="page2" class="page-view hidden">
+        <div class="brass-diya">
+          <div class="glowing-flame"></div>
+        </div>
+
+        <h1 class="calligraphy-headline">Happy Diwali</h1>
+        <h2 id="p2DisplayName" class="festive-user-name"></h2>
+
+        <div class="rangoli-wrapper">
+          <svg viewBox="0 0 100 100" class="rangoli-svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#d4af37" stroke-width="0.75"/>
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#ffe899" stroke-width="0.5" stroke-dasharray="1 1"/>
+            <g stroke="#d4af37" stroke-width="0.6" fill="none">
+              <polygon points="50,14 63,37 86,50 63,63 50,86 37,63 14,50 37,37"/>
+              <circle cx="50" cy="50" r="14"/>
+            </g>
+            <circle cx="50" cy="50" r="4" fill="#ffd700"/>
+          </svg>
+        </div>
+
+        <button id="p2NextBtn" class="luxury-gold-btn" onclick="revealPage3()">
+          <span>View Greetings</span> <span class="arrow-glyph">➜</span>
+        </button>
+      </section>
+
+      <!-- ================= PAGE 3 ================= -->
+      <section id="page3" class="page-view hidden">
+        <div class="brass-diya">
+          <div class="glowing-flame"></div>
+        </div>
+
+        <h1 class="calligraphy-headline">Happy Diwali</h1>
+        <h2 id="p3DisplayName" class="festive-user-name"></h2>
+
+        <div class="parchment-message-card">
+          <div class="card-ornament">❖ ─── ✦ ─── ❖</div>
+          <p class="greeting-quote">
+            May the supreme luminance of glowing diyas brighten your destiny with boundless joy, pristine peace, triumphant prosperity, and eternal good health.
+          </p>
+          <p class="greeting-quote secondary">
+            Wishing you and your respected family a sparkling and deeply blessed Diwali celebration!
+          </p>
+          
+          <div class="signature-stamp">
+            <span class="gold-sparkle">✨</span>
+            <p class="signature-name">- Yours,Nivas Kamble</p>
+          </div>
+        </div>
+
+        <div class="rangoli-wrapper small">
+          <svg viewBox="0 0 100 100" class="rangoli-svg">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#d4af37" stroke-width="0.8"/>
+            <circle cx="50" cy="50" r="28" fill="none" stroke="#ffd700" stroke-width="0.5"/>
+            <circle cx="50" cy="50" r="6" fill="#ffd700"/>
+          </svg>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Creator Attribution Tag -->
+  <footer class="creator-badge">Created by Aradhy</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

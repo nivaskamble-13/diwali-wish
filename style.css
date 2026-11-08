@@ -1,0 +1,591 @@
+:root {
+  --velvet-maroon-dark: #220005;
+  --velvet-maroon: #4d020a;
+  --velvet-maroon-light: #770614;
+  --imperial-crimson: #9e0c1f;
+  --gold-primary: #d4af37;
+  --gold-light: #fdf3b8;
+  --gold-deep: #8c6711;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at 50% 35%, var(--velvet-maroon-light) 0%, var(--velvet-maroon) 50%, var(--velvet-maroon-dark) 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+  position: relative;
+}
+
+/* Screen Shake Effect */
+.screen-shake {
+  animation: shakeAction 0.65s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shakeAction {
+  10%, 90% { transform: translate3d(-3px, 2px, 0) rotate(-0.4deg); }
+  20%, 80% { transform: translate3d(4px, -3px, 0) rotate(0.4deg); }
+  30%, 50%, 70% { transform: translate3d(-5px, 3px, 0) rotate(-0.6deg); }
+  40%, 60% { transform: translate3d(5px, -2px, 0) rotate(0.6deg); }
+}
+
+/* Background Fireworks Canvas */
+#fireworksCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Toran & Side Garlands */
+.royal-toran {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 26px;
+  z-index: 25;
+  padding: 6px 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+  user-select: none;
+}
+
+.toran-item {
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,0.7));
+  animation: gentleSway 2.5s infinite alternate ease-in-out;
+}
+.toran-item.yellow { animation-delay: 0.5s; }
+.toran-item.leaf { animation-delay: 1.2s; }
+
+@keyframes gentleSway {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(6px); }
+}
+
+.side-garland {
+  position: fixed;
+  top: 35px;
+  bottom: 0;
+  width: 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 26px;
+  z-index: 20;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.7));
+}
+
+.left-garland { left: 8px; }
+.right-garland { right: 8px; }
+
+.flower-drop {
+  animation: garlandBreeze 3s infinite alternate ease-in-out;
+}
+.flower-drop.orange { animation-delay: 1s; }
+
+@keyframes garlandBreeze {
+  0% { transform: rotate(-3deg) translateX(0); }
+  100% { transform: rotate(3deg) translateX(3px); }
+}
+
+/* Main Royal Frame */
+.luxury-main-container {
+  position: relative;
+  z-index: 10;
+  width: 90%;
+  max-width: 490px;
+  margin: 60px 20px 40px;
+}
+
+.royal-gold-box {
+  background: radial-gradient(circle at 50% 30%, rgba(70, 3, 11, 0.94) 0%, rgba(28, 1, 4, 0.98) 100%);
+  border: 2px solid var(--gold-primary);
+  border-radius: 30px;
+  padding: 42px 28px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.25), inset 0 0 30px rgba(212, 175, 55, 0.15);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+
+/* Corner Filigrees */
+.filigree-corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--gold-primary);
+}
+.tl { top: 12px; left: 12px; border-right: none; border-bottom: none; border-top-left-radius: 10px; }
+.tr { top: 12px; right: 12px; border-left: none; border-bottom: none; border-top-right-radius: 10px; }
+.bl { bottom: 12px; left: 12px; border-right: none; border-top: none; border-bottom-left-radius: 10px; }
+.br { bottom: 12px; right: 12px; border-left: none; border-top: none; border-bottom-right-radius: 10px; }
+
+/* Real Glowing Diya */
+.brass-diya {
+  width: 34px;
+  height: 18px;
+  background: radial-gradient(ellipse at 50% 80%, #ffd700 0%, #a37213 75%, #462c03 100%);
+  border-radius: 0 0 20px 20px;
+  margin: 0 auto 16px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+}
+
+.glowing-flame {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 22px;
+  background: radial-gradient(ellipse at 50% 70%, #ffffff 0%, #ffea00 35%, #ff4d00 80%, transparent 100%);
+  border-radius: 50% 50% 35% 35%;
+  filter: drop-shadow(0 0 8px #ff9e00) drop-shadow(0 0 18px #ff3700);
+  animation: flameFlicker 1.4s infinite alternate ease-in-out;
+}
+
+@keyframes flameFlicker {
+  0% { transform: translateX(-50%) scale(0.94) rotate(-1deg); }
+  100% { transform: translateX(-50%) scale(1.08) rotate(1.5deg); }
+}
+
+.welcome-banner {
+  font-family: 'Cinzel', serif;
+  font-size: 13.5px;
+  letter-spacing: 3px;
+  color: var(--gold-light);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.prompt-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 21px;
+  letter-spacing: 2px;
+  color: var(--gold-primary);
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+/* Name Input Box */
+.input-container input {
+  width: 100%;
+  padding: 15px 22px;
+  font-size: 16.5px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid var(--gold-primary);
+  color: #2b0005;
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), inset 0 0 10px rgba(212, 175, 55, 0.35);
+  margin-bottom: 22px;
+}
+
+/* Luxury Gold Button */
+.luxury-gold-btn {
+  background: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #87650f 100%);
+  color: #170003;
+  border: 1px solid #ffec99;
+  font-family: 'Cinzel', serif;
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 13px 38px;
+  border-radius: 35px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 22px rgba(212, 175, 55, 0.5);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.luxury-gold-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.75);
+}
+
+.arrow-glyph { font-size: 17px; }
+
+/* Rotating Rangoli */
+.rangoli-wrapper {
+  width: 95px;
+  height: 95px;
+  margin: 25px auto 0;
+  opacity: 0.88;
+}
+.rangoli-wrapper.small { width: 60px; height: 60px; margin-top: 18px; }
+
+.rangoli-svg {
+  width: 100%;
+  height: 100%;
+  animation: rotateRangoli 40s linear infinite;
+}
+
+@keyframes rotateRangoli {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Calligraphy & Greetings */
+.calligraphy-headline {
+  font-family: 'Great Vibes', cursive;
+  font-size: 52px;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.65), 0 4px 10px rgba(0,0,0,0.9);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.festive-user-name {
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.parchment-message-card {
+  background: rgba(12, 0, 2, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 20px;
+  padding: 26px 20px;
+  margin: 15px 0;
+}
+
+.card-ornament {
+  color: var(--gold-primary);
+  font-size: 13px;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+}
+
+.greeting-quote {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #fff6e4;
+  margin-bottom: 10px;
+}
+.greeting-quote.secondary {
+  font-weight: 600;
+  color: #ffd700;
+}
+
+.signature-stamp {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.gold-sparkle { color: #ffd700; font-size: 18px; }
+
+.signature-name {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 1.5px;
+}
+
+/* ================= वास्तववादी दोरीने ओढल्यासारखे पडदे (Realistic Pulled Curtains) ================= */
+.curtain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.curtain-overlay.active {
+  display: flex;
+  pointer-events: auto;
+}
+
+.curtain-panel {
+  position: absolute;
+  top: 0;
+  width: 51%; /* थोडा ओव्हरलॅप जेणेकरून फट दिसणार नाही */
+  height: 100%;
+  overflow: hidden;
+  /* दोरीने मखमली पडदा ओढल्यासारखा कर्व */
+  transition: transform 1.35s cubic-bezier(0.22, 1, 0.36, 1), filter 1.35s ease;
+  box-shadow: 0 0 65px rgba(0,0,0,0.95);
+  will-change: transform;
+}
+
+/* उघडे असताना - दोन्ही बाजूला घड्या एकत्र (Gathered at sides) */
+.curtain-left {
+  left: 0;
+  transform: translateX(-102%) scaleX(0.85);
+  transform-origin: left center;
+}
+
+.curtain-right {
+  right: 0;
+  transform: translateX(102%) scaleX(0.85);
+  transform-origin: right center;
+}
+
+/* पडद्यांच्या खोल मखमली घड्या */
+.curtain-folds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #180004 0px,
+    #3b020a 16px,
+    #690714 30px,
+    #910d1e 42px,
+    #42030b 56px,
+    #140003 70px
+  );
+  box-shadow: inset 0 0 90px rgba(0, 0, 0, 0.9);
+}
+
+/* बंद होताना - मधोमध ताणले जाणे (Stretched to center seam with soft bounce) */
+.curtain-overlay.closed .curtain-left {
+  transform: translateX(0) scaleX(1);
+}
+
+.curtain-overlay.closed .curtain-right {
+  transform: translateX(0) scaleX(1);
+}
+
+/* कडेची सोनेरी झालर */
+.gold-zari-fringe {
+  position: absolute;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  background: repeating-linear-gradient(180deg, #ffd700 0px, #996e12 6px, #fff099 12px);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.9);
+}
+.curtain-left .gold-zari-fringe { right: 0; }
+.curtain-right .gold-zari-fringe { left: 0; }
+
+/* 3D Anar */
+.anar-stage {
+  position: relative;
+  z-index: 105;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+.ambient-fire-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 170, 0, 0) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: background 0.4s ease;
+}
+
+.anar-3d {
+  position: relative;
+  width: 105px;
+  height: 155px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s;
+}
+
+.anar-3d:hover {
+  transform: scale(1.06);
+}
+
+.wick-cord {
+  width: 4px;
+  height: 20px;
+  background: #555;
+  border-radius: 2px;
+  position: relative;
+}
+
+.wick-spark {
+  position: absolute;
+  top: -7px;
+  left: -4px;
+  width: 13px;
+  height: 13px;
+  background: radial-gradient(circle, #fff 10%, #ffcc00 50%, #ff2600 90%);
+  border-radius: 50%;
+  box-shadow: 0 0 12px #ffbb00, 0 0 22px #ff3b00;
+  animation: sparkDance 0.16s infinite alternate;
+}
+
+@keyframes sparkDance {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.35); opacity: 1; }
+}
+
+.anar-clay-neck {
+  width: 26px;
+  height: 8px;
+  background: #946d17;
+  border-radius: 3px;
+  border: 1px solid #5a4005;
+}
+
+.anar-metallic-cone {
+  width: 95px;
+  height: 110px;
+  background: linear-gradient(110deg, #1b5e20 0%, #2e7d32 28%, #b71c1c 34%, #e53935 70%, #ffd700 82%, #b58d19 100%);
+  clip-path: polygon(36% 0%, 64% 0%, 100% 100%, 0% 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+}
+
+.cone-shimmer {
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 25%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-15deg);
+}
+
+.anar-brand {
+  margin-top: 38px;
+  font-family: 'Cinzel', serif;
+  font-size: 11.5px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 2px 5px #000;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+.anar-brand span { font-size: 13.5px; color: #ffd700; }
+
+.golden-border-strip {
+  width: 100%;
+  height: 4px;
+  background: #ffd700;
+  margin-top: 9px;
+}
+
+.anar-clay-bottom {
+  width: 108px;
+  height: 13px;
+  background: radial-gradient(ellipse at 50% 50%, #44220b 0%, #261103 100%);
+  border-radius: 4px;
+  border-top: 2px solid var(--gold-deep);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.85);
+}
+
+.anar-prompt-text {
+  font-family: 'Cinzel', serif;
+  font-size: 14.5px;
+  color: var(--gold-light);
+  margin-top: 22px;
+  background: rgba(12, 0, 2, 0.8);
+  padding: 8px 24px;
+  border-radius: 25px;
+  border: 1px solid var(--gold-primary);
+  letter-spacing: 1px;
+}
+
+#sparkFountainCanvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  pointer-events: none;
+  width: 380px;
+  height: 500px;
+  z-index: 106;
+}
+
+/* Creator Tag */
+.creator-badge {
+  position: fixed;
+  bottom: 12px;
+  right: 18px;
+  font-family: 'Cinzel', serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--gold-primary);
+  background: rgba(18, 0, 3, 0.75);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  z-index: 25;
+}
+
+/* ================= पेज ट्रॅन्झिशन इफेक्ट्स (Smooth Card Transitions) ================= */
+.page-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.page-view.page-fade-out {
+  opacity: 0;
+  transform: translateY(-16px) scale(0.95);
+  pointer-events: none;
+}
+
+.page-view.page-fade-in {
+  animation: smoothPageEnter 0.75s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes smoothPageEnter {
+  0% { opacity: 0; transform: translateY(18px) scale(0.96); filter: blur(3px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+.hidden { display: none !important; }
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+  .side-garland { display: none; }
+  .calligraphy-headline { font-size: 42px; }
+  .festive-user-name { font-size: 22px; }
+  .royal-gold-box { padding: 32px 18px; }
+  .anar-3d { transform: scale(0.9); }
+}
